@@ -1,5 +1,5 @@
-![.NET Core](https://github.com/ShawnRG/Configuratorr/workflows/.NET%20Core/badge.svg)
 # Configuratorr
+![.NET Core](https://github.com/ShawnRG/Configuratorr/workflows/.NET%20Core/badge.svg)
 Configuration Tool for a HTPC download box
 
 ## Features (so far..)
