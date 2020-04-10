@@ -21,7 +21,8 @@ jobs:
       working-directory: src/Configuratorr
       run: dotnet restore
     - name: Build
-      run: dotnet build src/Configuratorr --configuration Release --no-restore
+      working-directory: src/Configuratorr
+      run: dotnet build --configuration Release --no-restore
     - name: Test
       working-directory: tests/ConfiguratorrTests
       run: dotnet restore && dotnet test --no-restore --verbosity normal
