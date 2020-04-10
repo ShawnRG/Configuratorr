@@ -1,0 +1,42 @@
+[
+  {
+    "id": "sitelink",
+    "type": "inputstring",
+    "name": "Site Link",
+    "value": "https://ettv.root.yt/"
+  },
+  {
+    "id": "cookieheader",
+    "type": "hiddendata",
+    "name": "CookieHeader",
+    "value": "__cfduid=d808bab694def449b42978b2a2138b9d61586511902; PHPSESSID=agnddu5r8dv0j4hhpsgeern2o7; pass=deleted; uid=deleted; __cf_bm=7df0edce631e0509717f28a3fb6c8f7ec46c1467-1586511903-1800-Abk3DZbyFAdn2ce+YVKNSzHDJeDgTwpoEreUYk5WYuVESHweYoLP7NnPCAK3bvepoTuXMIb/y0H85b5gQ6joMBY="
+  },
+  {
+    "id": "lasterror",
+    "type": "hiddendata",
+    "name": "LastError",
+    "value": null
+  },
+  {
+    "id": "sortrequestedfromsite",
+    "type": "inputselect",
+    "name": "Sort requested from site",
+    "value": "id",
+    "options": {
+      "id": "created",
+      "seeders": "seeders",
+      "size": "size",
+      "name": "title"
+    }
+  },
+  {
+    "id": "orderrequestedfromsite",
+    "type": "inputselect",
+    "name": "Order requested from site",
+    "value": "desc",
+    "options": {
+      "desc": "desc",
+      "asc": "asc"
+    }
+  }
+]

@@ -1,0 +1,36 @@
+[
+  {
+    "id": "sitelink",
+    "type": "inputstring",
+    "name": "Site Link",
+    "value": "https://www.bittorrent.am/"
+  },
+  {
+    "id": "cookieheader",
+    "type": "hiddendata",
+    "name": "CookieHeader",
+    "value": ""
+  },
+  {
+    "id": "lasterror",
+    "type": "hiddendata",
+    "name": "LastError",
+    "value": ""
+  },
+  {
+    "id": "sortrequestedfromsite",
+    "type": "inputselect",
+    "name": "Sort requested from site",
+    "value": "pdd",
+    "options": {
+      "pdd": "created desc",
+      "pd": "created asc",
+      "sdsd": "seeders desc",
+      "sds": "seeders asc",
+      "szd": "size desc",
+      "sz": "size asc",
+      "td": "title desc",
+      "t": "title asc"
+    }
+  }
+]
