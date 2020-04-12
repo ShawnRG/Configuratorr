@@ -7,6 +7,7 @@ using Configuratorr.IO;
 using Moq;
 using Xunit;
 using Microsoft.Data.Sqlite;
+using Configuratorr.Model;
 
 namespace ConfiguratorrTests
 {
@@ -41,7 +42,12 @@ namespace ConfiguratorrTests
             var indexers = IndexerPlugin.GetIndexerNamesFromPath(jackettPath);
             var tempDb = Path.GetTempPath() + Guid.NewGuid().ToString() + ".db";
             File.Copy(dbFile, tempDb);
-            IndexerMigrator.MigrateIndexers(indexers, tempDb);
+            var options = new Configuratorr.Options.IndexMigratorOptions
+            {
+                ApiKey = Guid.NewGuid().ToString(),
+                jackettURL = "localhost:9117"
+            };
+            IndexerMigrator.MigrateIndexers(indexers, tempDb, options);
             var connectionStringBuilder = new SqliteConnectionStringBuilder();
             connectionStringBuilder.DataSource = tempDb;
 
@@ -57,6 +63,24 @@ namespace ConfiguratorrTests
                     {
                         var count = reader.GetInt32(0);
                         Assert.Equal(6, count);
+                    }
+                }
+
+                selectCmd.CommandText = "SELECT * FROM Indexers;";
+                using (var reader =selectCmd.ExecuteReader()) 
+                {
+                    while (reader.Read()) {
+                        for (int i = 0; i < reader.FieldCount; i++)
+                        {
+                            string value = reader.GetValue(i).ToString();
+                            Assert.NotEqual("null", value);
+                            if (i == 3) {
+                                var settings = Newtonsoft.Json.JsonConvert.DeserializeObject<IndexerSettings>(value);
+                                Assert.Equal(options.ApiKey, settings.apiKey);
+                                Assert.Contains(options.jackettURL, settings.baseUrl);
+                                Assert.Contains(reader.GetValue(1).ToString(), settings.baseUrl);
+                            }
+                        }                        
                     }
                 }
             }
