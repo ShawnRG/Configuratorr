@@ -15,10 +15,8 @@ namespace Configuratorr
         {
             var indexerNames = IndexerPlugin.GetIndexerNamesFromPath(options.JackettDirectory);
 
-            var sonarrDbPath = Path.Combine(options.SonarrDirectory, "sonarr.db");
-            var radarrDbPath = Path.Combine(options.RadarrDirectory, "radarr.db");
-            MigrateIndexers(indexerNames, sonarrDbPath, options);
-            MigrateIndexers(indexerNames, radarrDbPath, options);
+            MigrateIndexers(indexerNames, options.SonarrDirectory, options);
+            MigrateIndexers(indexerNames, options.RadarrDirectory, options);
             return 0;
         }
 

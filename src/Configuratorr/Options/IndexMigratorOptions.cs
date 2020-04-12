@@ -11,9 +11,9 @@ namespace Configuratorr.Options
             [Option("jackett", Required = true, HelpText = "Jackett configuration directory")]
             public string JackettDirectory { get; set; }
 
-            [Option("sonarr", Required = true, HelpText = "Sonarr configuration directory")]
+            [Option("sonarr", Required = true, HelpText = "Sonarr db file")]
             public string SonarrDirectory { get; set; }
-            [Option("radarr", Required = true, HelpText = "Radarr configuration directory")]
+            [Option("radarr", Required = true, HelpText = "Radarr db file")]
             public string RadarrDirectory { get; set; }
 
             [Option("jackettURL", Required = false, HelpText = "Jackett base URL default: localhost:9117", Default = "localhost:9117")]
