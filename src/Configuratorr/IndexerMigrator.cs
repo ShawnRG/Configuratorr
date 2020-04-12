@@ -17,12 +17,12 @@ namespace Configuratorr
 
             var sonarrDbPath = Path.Combine(options.SonarrDirectory, "sonarr.db");
             var radarrDbPath = Path.Combine(options.RadarrDirectory, "radarr.db");
-            MigrateIndexers(indexerNames, sonarrDbPath);
-            MigrateIndexers(indexerNames, radarrDbPath);
+            MigrateIndexers(indexerNames, sonarrDbPath, options);
+            MigrateIndexers(indexerNames, radarrDbPath, options);
             return 0;
         }
 
-        public static void MigrateIndexers(List<string> indexerNames, string dbPath)
+        public static void MigrateIndexers(List<string> indexerNames, string dbPath, IndexMigratorOptions options)
         {
             Console.WriteLine($"Started migration into ({dbPath})");
             var connectionStringBuilder = new SqliteConnectionStringBuilder();
@@ -37,7 +37,7 @@ namespace Configuratorr
                      + $"VALUES(@Name, @Implementation, @Settings, @ConfigContract, @EnableRss, @EnableAS, @EnableIS);";
                     var cmd = connection.CreateCommand();
                     cmd.CommandText = commandText;
-                    indexerNames.Select(name => new Indexer { Name = name }).ToList()
+                    indexerNames.Select(name => IndexerFactory.Create(name, options)).ToList()
                         .ForEach(InsertIndexer(cmd));
 
                     transaction.Commit();
