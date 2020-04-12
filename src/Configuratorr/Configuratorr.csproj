@@ -6,7 +6,7 @@
     <VersionPrefix>0.0.1</VersionPrefix>
     <AssemblyName>configuratorr</AssemblyName>
     <PublishTrimmed>true</PublishTrimmed>
-    <PublishReadyToRun>true</PublishReadyToRun>
+    <PublishReadyToRun>false</PublishReadyToRun>
     <RuntimeIdentifiers>win10-x64;osx.10.12-x64;debian.8-x64</RuntimeIdentifiers>
   </PropertyGroup>
 

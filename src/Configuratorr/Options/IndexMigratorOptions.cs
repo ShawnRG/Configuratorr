@@ -18,5 +18,8 @@ namespace Configuratorr.Options
 
             [Option("jackettURL", Required = false, HelpText = "Jackett base URL default: localhost:9117", Default = "localhost:9117")]
             public string jackettURL { get; set; }
+
+            [Option('d', "dropcreate", Required = false, HelpText = "Drop all indexers before adding jacket indexers", Default = false)]
+            public bool recreate { get; set; }
     }
 }

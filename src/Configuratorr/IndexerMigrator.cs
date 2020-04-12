@@ -33,9 +33,16 @@ namespace Configuratorr
                 connection.Open();
                 using (var transaction = connection.BeginTransaction())
                 {
+
                     var commandText = $"INSERT INTO Indexers (Name, \"Implementation\", Settings, ConfigContract, EnableRss, EnableAutomaticSearch, EnableInteractiveSearch) "
                      + $"VALUES(@Name, @Implementation, @Settings, @ConfigContract, @EnableRss, @EnableAS, @EnableIS);";
                     var cmd = connection.CreateCommand();
+                    if (options.recreate) {
+                        Console.WriteLine("Recreation enabled: Dropping all indexers");
+                        cmd.CommandText = "DELETE FROM Indexers;";
+                        var size = cmd.ExecuteNonQuery();
+                        Console.WriteLine($"Deleted {size} indexers");
+                    }
                     cmd.CommandText = commandText;
                     indexerNames.Select(name => IndexerFactory.Create(name, options)).ToList()
                         .ForEach(InsertIndexer(cmd));

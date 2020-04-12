@@ -6,7 +6,7 @@ namespace Configuratorr.Model
     {
         public static Indexer Create(string name, IndexMigratorOptions options) {
             var settings = new IndexerSettings{
-                baseUrl = $"http://{options.jackettURL}/api/v2.O/indexers/{name}/results/torznab/",
+                baseUrl = $"http://{options.jackettURL}/api/v2.0/indexers/{name}/results/torznab/",
                 apiKey = options.ApiKey
             };
 
