@@ -3,7 +3,14 @@
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>netcoreapp3.1</TargetFramework>
+    <VersionPrefix>0.0.1</VersionPrefix>
+    <AssemblyName>configuratorr</AssemblyName>
+    <PublishTrimmed>true</PublishTrimmed>
+    <PublishReadyToRun>true</PublishReadyToRun>
+    <RuntimeIdentifiers>win10-x64;osx.10.12-x64;debian.8-x64</RuntimeIdentifiers>
   </PropertyGroup>
+
+
 
   <ItemGroup>
     <PackageReference Include="CommandLineParser" Version="2.7.82" />
